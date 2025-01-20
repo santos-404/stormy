@@ -4,7 +4,7 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	"github.com/javsanmar5/passwordmanager/storage"
+	storage "github.com/javsanmar5/passwordmanager/utils"
 	"github.com/spf13/cobra"
 )
 
