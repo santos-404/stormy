@@ -15,11 +15,11 @@ var getCmd = &cobra.Command{
 This command allows you to quickly access your saved passwords without having to manually look them up.
 
 Examples:
-  # Get the password for the service 'github' and username 'johndoe'
-  passwordmanager get -s github -u johndoe
+	# Get the password for the service 'github' and username 'johndoe'
+	passwordmanager get -s github -u johndoe
 
-  # Get the password for the service 'email' and username 'janedoe'
-  passwordmanager get -s email -u janedoe`,
+	# Get the password for the service 'email' and username 'janedoe'
+	passwordmanager get -s email -u janedoe`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.GetPassword(service, username)
 	},
