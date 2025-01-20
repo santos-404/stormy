@@ -4,36 +4,34 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	"fmt"
-
+	"github.com/javsanmar5/passwordmanager/storage"
 	"github.com/spf13/cobra"
 )
 
-// getCmd represents the get command
 var getCmd = &cobra.Command{
 	Use:   "get",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Short: "Get a password given a service and username",
+	Long: `The get command retrieves a stored password for a specified service and username.
+This command allows you to quickly access your saved passwords without having to manually look them up.
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+Examples:
+  # Get the password for the service 'github' and username 'johndoe'
+  passwordmanager get -s github -u johndoe
+
+  # Get the password for the service 'email' and username 'janedoe'
+  passwordmanager get -s email -u janedoe`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("get called")
+		storage.GetPassword(service, username)
 	},
 }
 
 func init() {
 	rootCmd.AddCommand(getCmd)
 
-	// Here you will define your flags and configuration settings.
+	getCmd.Flags().StringVarP(&service, "service", "s", "", "Name of the service (required)")
+	getCmd.Flags().StringVarP(&username, "username", "u", "", "Username for the service (required)")
 
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// getCmd.PersistentFlags().String("foo", "", "A help for foo")
+	getCmd.MarkFlagRequired("service")
+	getCmd.MarkFlagRequired("username")
 
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// getCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

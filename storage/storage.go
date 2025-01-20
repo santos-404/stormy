@@ -37,6 +37,33 @@ func AddPassword(service, username, password string) {
 	fmt.Println("Password added successfully!")
 }
 
+func GetPassword(service, username string) {
+	dbPath := getDBPath()
+
+	db, err := bolt.Open(dbPath, 0600, nil)
+	if err != nil {
+		log.Fatalf("Failed to open database: %v", err)
+	}
+	defer db.Close()
+
+	var password string
+
+	err = db.View(func(tx *bolt.Tx) error {
+		// Assume bucket exists and has keys. Maybe wanna add a check here
+		bucket := tx.Bucket([]byte(service))
+		pwd := bucket.Get([]byte(username))
+
+		password = string(pwd)
+
+		return nil
+	})
+	if err != nil {
+		log.Fatalf("Failed to update database: %v", err)
+	}
+
+	fmt.Printf("Password for username %s in service %s is %s\n", username, service, password)
+}
+
 func getDBPath() string {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
