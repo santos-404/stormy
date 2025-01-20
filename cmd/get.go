@@ -4,7 +4,7 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	storage "github.com/javsanmar5/passwordmanager/utils"
+	"github.com/javsanmar5/passwordmanager/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -21,7 +21,7 @@ Examples:
   # Get the password for the service 'email' and username 'janedoe'
   passwordmanager get -s email -u janedoe`,
 	Run: func(cmd *cobra.Command, args []string) {
-		storage.GetPassword(service, username)
+		utils.GetPassword(service, username)
 	},
 }
 

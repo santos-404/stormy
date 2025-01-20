@@ -1,19 +1,17 @@
 /*
 Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 */
-package storage
+package utils
 
 import (
 	"fmt"
 	"log"
-	"os"
-	"path/filepath"
 
 	bolt "go.etcd.io/bbolt"
 )
 
 func AddPassword(service, username, password string) {
-	dbPath := getDBPath()
+	dbPath := GetDBPath()
 
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
@@ -38,7 +36,7 @@ func AddPassword(service, username, password string) {
 }
 
 func GetPassword(service, username string) {
-	dbPath := getDBPath()
+	dbPath := GetDBPath()
 
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
@@ -68,12 +66,4 @@ func GetPassword(service, username string) {
 	}
 
 	fmt.Printf("Password for username %s in service %s is %s\n", username, service, password)
-}
-
-func getDBPath() string {
-	homeDir, err := os.UserHomeDir()
-	if err != nil {
-		log.Fatalf("Failed to get home directory: %v", err)
-	}
-	return filepath.Join(homeDir, ".passwordmanager.db")
 }

@@ -4,7 +4,7 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	storage "github.com/javsanmar5/passwordmanager/utils"
+	"github.com/javsanmar5/passwordmanager/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -20,7 +20,7 @@ var addCmd = &cobra.Command{
 	Long: `Add a new password entry for a specific 
 service with a username and password.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		storage.AddPassword(service, username, password)
+		utils.AddPassword(service, username, password)
 	},
 }
 
