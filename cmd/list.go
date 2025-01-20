@@ -17,11 +17,11 @@ You can use this list to see all the passwords you have stored or
 to list every password for a specific service.
 
 Examples:
-  # List all the passwords stored
-  passwordmanager list
+	# List all the passwords stored
+	passwordmanager list
 
-  # List all the passwords stored for the service 'github'
-  passwordmanager list -s github
+	# List all the passwords stored for the service 'github'
+	passwordmanager list -s github
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// I know that extracting the method of list passwords by service
