@@ -65,3 +65,25 @@ func ListPasswordsByService(service string) {
 		log.Fatalf("Failed to list passwords: %v", err)
 	}
 }
+
+func ListAllServices() {
+	dbPath := GetDBPath()
+
+	db, err := bolt.Open(dbPath, 0600, nil)
+	if err != nil {
+		log.Fatalf("Failed to open database: %v", err)
+	}
+	defer db.Close()
+
+	db.View(func(tx *bolt.Tx) error {
+		fmt.Println("All the services are:")
+		tx.ForEach(func(service []byte, b *bolt.Bucket) error {
+			fmt.Printf("\t%s\n", string(service))
+			return nil
+		})
+		return nil
+	})
+	if err != nil {
+		log.Fatalf("Failed to list services: %v", err)
+	}
+}

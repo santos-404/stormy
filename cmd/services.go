@@ -1,0 +1,27 @@
+/*
+Copyright © 2025 Javier Santos javier.jsm21@gmail.com
+*/
+package cmd
+
+import (
+	"github.com/javsanmar5/passwordmanager/utils"
+	"github.com/spf13/cobra"
+)
+
+var servicesCmd = &cobra.Command{
+	Use:   "services",
+	Short: "A list of every service stored",
+	Long: `This command provides a list of every service stored in the password manager.
+
+Examples:
+	# List all the services stored
+	passwordmanager services
+	`,
+	Run: func(cmd *cobra.Command, args []string) {
+		utils.ListAllServices()
+	},
+}
+
+func init() {
+	rootCmd.AddCommand(servicesCmd)
+}
