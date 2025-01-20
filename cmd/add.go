@@ -18,7 +18,11 @@ var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Add a new password entry",
 	Long: `Add a new password entry for a specific 
-service with a username and password.`,
+service with a username and password.
+
+Examples:
+	# Add a new password entry for the service 'github' with username 'johndoe' and password 'password123'
+	passwordmanager add -s github -u johndoe -p password123`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.AddPassword(service, username, password)
 	},
