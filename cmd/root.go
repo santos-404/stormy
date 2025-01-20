@@ -12,7 +12,7 @@ import (
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "passwordmanager",
-	Short: "A simple CLI tool for manage all your passwords. Made with Go and Cobra.",
+	Short: "A simple CLI tool to manage all your passwords. Built with Go and Cobra.",
 	Long: `PasswordManager is a command-line tool built with Go and Cobra to help you manage 
 and organize your passwords securely and efficiently. 
 
