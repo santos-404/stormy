@@ -49,16 +49,22 @@ func GetPassword(service, username string) {
 	var password string
 
 	err = db.View(func(tx *bolt.Tx) error {
-		// Assume bucket exists and has keys. Maybe wanna add a check here
 		bucket := tx.Bucket([]byte(service))
+		if bucket == nil {
+			return fmt.Errorf("service %s not found", service)
+		}
+
 		pwd := bucket.Get([]byte(username))
+		if pwd == nil {
+			return fmt.Errorf("username %s not found in service %s", username, service)
+		}
 
 		password = string(pwd)
 
 		return nil
 	})
 	if err != nil {
-		log.Fatalf("Failed to update database: %v", err)
+		log.Fatalf("Failed to retrieve info from database: %v", err)
 	}
 
 	fmt.Printf("Password for username %s in service %s is %s\n", username, service, password)
