@@ -43,6 +43,7 @@ func SetMasterPasword(masterPassword, salt string) {
 			return fmt.Errorf("master password already set; cannot overwrite it")
 		}
 
+		bucket.Put([]byte("Salt"), saltBytes)
 		return bucket.Put([]byte("MasterPassword"), hashedPassword)
 	})
 	if err != nil {
@@ -88,4 +89,47 @@ func getMasterPassword(db *bolt.DB) []byte {
 	}
 
 	return masterPassword
+}
+
+func decryptPassword(encryptedPassword, masterPassword []byte, db *bolt.DB) (string, error) {
+
+	var saltBytes []byte
+
+	err := db.View(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket([]byte("MasterPassword"))
+		if bucket == nil {
+			return fmt.Errorf("master password not set")
+		}
+		saltBytes = bucket.Get([]byte("Salt"))
+
+		return nil
+	})
+	if err != nil {
+		log.Fatalf("Failed to get salt: %v", err)
+	}
+
+	hashedPassword := pbkdf2.Key(masterPassword, saltBytes, 10000, 32, sha256.New)
+
+	block, err := aes.NewCipher(hashedPassword)
+	if err != nil {
+		return "", err
+	}
+
+	aesGCM, err := cipher.NewGCM(block)
+	if err != nil {
+		return "", err
+	}
+
+	nonceSize := aesGCM.NonceSize()
+	if len(encryptedPassword) < nonceSize {
+		return "", fmt.Errorf("ciphertext too short")
+	}
+
+	nonce, ciphertext := encryptedPassword[:nonceSize], encryptedPassword[nonceSize:]
+	plaintext, err := aesGCM.Open(nil, nonce, ciphertext, nil)
+	if err != nil {
+		return "", err
+	}
+
+	return string(plaintext), nil
 }

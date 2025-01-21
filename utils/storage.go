@@ -4,8 +4,11 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package utils
 
 import (
+	"bufio"
 	"fmt"
 	"log"
+	"os"
+	"strings"
 
 	bolt "go.etcd.io/bbolt"
 )
@@ -30,7 +33,6 @@ func AddPassword(service, username, password string) {
 			return fmt.Errorf("failed to encrypt password: %v", err)
 		}
 		return bucket.Put([]byte(username), []byte(encryptedPassword))
-		// return bucket.Put([]byte(username), []byte(password))
 	})
 	if err != nil {
 		log.Fatalf("Failed to update database: %v", err)
@@ -61,7 +63,15 @@ func GetPassword(service, username string) {
 			return fmt.Errorf("username %s not found in service %s", username, service)
 		}
 
-		password = string(pwd)
+		reader := bufio.NewReader(os.Stdin)
+		fmt.Print("Enter your master password: ")
+		masterPassword, _ := reader.ReadString('\n')
+		masterPassword = strings.TrimSpace(masterPassword)
+
+		password, err = decryptPassword(pwd, []byte(masterPassword), db)
+		if err != nil {
+			return fmt.Errorf("failed to decrypt password: %v", err)
+		}
 
 		return nil
 	})
