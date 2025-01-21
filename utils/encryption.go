@@ -77,7 +77,7 @@ func getMasterPassword(db *bolt.DB) []byte {
 	err := db.View(func(tx *bolt.Tx) error {
 		bucket := tx.Bucket([]byte("MasterPassword"))
 		if bucket == nil {
-			return fmt.Errorf("master password not set")
+			return fmt.Errorf("master password not set. \nTry: stormy set-master-password --help")
 		}
 
 		masterPassword = bucket.Get([]byte("MasterPassword"))
