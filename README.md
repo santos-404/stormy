@@ -59,7 +59,7 @@ Before saving any passwords, set a master password to secure your data:
     ```
 
 
-2. **Add a password**
+2. **Add a password**.
 Save a new password for a service:
 
     ```bash
@@ -67,21 +67,21 @@ Save a new password for a service:
     ```
     
     
-3. **Retrieve a password**
+3. **Retrieve a password**.
 Retrieve a stored password:
     ```bash
     stormy get --service [service-name] --username [username]
     ```
 
     
-4. **Delete a password**
+4. **Delete a password**.
 Remove a password from the database:
     ```bash
-    stormy delete-password --service [service-name] --username [username]
+    stormy delete --service [service-name] --username [username]
     ```
 
 
-5. **List all services**
+5. **List all services**.
 View all the services for which passwords are stored:
 
     ```bash
