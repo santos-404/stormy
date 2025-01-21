@@ -78,11 +78,19 @@ func ListAllServices() {
 	defer db.Close()
 
 	db.View(func(tx *bolt.Tx) error {
-		fmt.Println("All the services are:")
+		empty := true
 		tx.ForEach(func(service []byte, b *bolt.Bucket) error {
-			fmt.Printf("\t%s\n", string(service))
+			if string(service) != "MasterPassword" {
+				fmt.Printf("%s\n", string(service))
+				empty = false
+			}
 			return nil
 		})
+
+		if empty {
+			fmt.Println("There are no services stored yet.")
+		}
+
 		return nil
 	})
 	if err != nil {
