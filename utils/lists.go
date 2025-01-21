@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/fatih/color"
 	bolt "go.etcd.io/bbolt"
 )
 
@@ -77,22 +78,31 @@ func ListAllServices() {
 	}
 	defer db.Close()
 
-	db.View(func(tx *bolt.Tx) error {
+	err = db.View(func(tx *bolt.Tx) error {
 		empty := true
+		color.Blue("-------------------------")
+		color.Blue("|  Available Services:  |")
+		color.Blue("-------------------------")
+		index := 1
+
 		tx.ForEach(func(service []byte, b *bolt.Bucket) error {
 			if string(service) != "MasterPassword" {
-				fmt.Printf("%s\n", string(service))
+				color.Green("%2d. %s\n", index, string(service))
+				index++
 				empty = false
 			}
 			return nil
 		})
 
 		if empty {
-			fmt.Println("There are no services stored yet.")
+			color.Red("There are no services stored yet.")
+		} else {
+			color.Blue("-------------------------")
 		}
 
 		return nil
 	})
+
 	if err != nil {
 		log.Fatalf("Failed to list services: %v", err)
 	}
