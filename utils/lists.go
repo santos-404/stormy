@@ -21,11 +21,13 @@ func ListAllPasswords() {
 
 	db.View(func(tx *bolt.Tx) error {
 		tx.ForEach(func(service []byte, bucket *bolt.Bucket) error {
-			fmt.Println("Service:", string(service))
+			if string(service) != "MasterPassword" {
+				fmt.Println("Service:", string(service))
 
-			cursor := bucket.Cursor()
-			for k, _ := cursor.First(); k != nil; k, _ = cursor.Next() {
-				fmt.Printf("\tUsername: %s\n", k)
+				cursor := bucket.Cursor()
+				for k, _ := cursor.First(); k != nil; k, _ = cursor.Next() {
+					fmt.Printf("\tUsername: %s\n", k)
+				}
 			}
 			return nil
 		})
