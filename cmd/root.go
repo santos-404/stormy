@@ -13,8 +13,12 @@ import (
 var rootCmd = &cobra.Command{
 	Use:   "stormy",
 	Short: "A simple CLI tool to manage all your passwords. Built with Go and Cobra.",
-	Long: `PasswordManager is a command-line tool built with Go and Cobra to help you manage 
+	Long: `Stormy is a command-line tool built with Go and Cobra to help you manage 
 and organize your passwords securely and efficiently. 
+
+Before saving your passwords, you must start setting a master password.
+You can do this with:
+	stormy set-master-password <your-password>
 
 Features include:
 - Adding, retrieving, and deleting passwords.
