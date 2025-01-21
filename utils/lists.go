@@ -21,17 +21,32 @@ func ListAllPasswords() {
 	defer db.Close()
 
 	db.View(func(tx *bolt.Tx) error {
+
+		color.Blue("------------------------------------------")
+		color.Blue("|          Available Passwords:          |")
+		color.Blue("------------------------------------------")
+		color.Blue("|      Service      |      Username      |")
+		color.Blue("------------------------------------------")
+
+		empty := true
+
 		tx.ForEach(func(service []byte, bucket *bolt.Bucket) error {
 			if string(service) != "MasterPassword" {
-				fmt.Println("Service:", string(service))
-
+				color.Green(string(service))
 				cursor := bucket.Cursor()
 				for k, _ := cursor.First(); k != nil; k, _ = cursor.Next() {
-					fmt.Printf("\tUsername: %s\n", k)
+					color.Yellow("\t\t\t%s", string(k))
+					empty = false
 				}
+				color.Blue("------------------------------------------")
 			}
 			return nil
 		})
+
+		if empty {
+			color.Red("There are no passwords stored yet.")
+		}
+
 		return nil
 	})
 	if err != nil {
@@ -50,17 +65,25 @@ func ListPasswordsByService(service string) {
 	defer db.Close()
 
 	err = db.View(func(tx *bolt.Tx) error {
+
 		bucket := tx.Bucket([]byte(service))
 		if bucket == nil {
 			return fmt.Errorf("service %s not found", service)
 		}
 
+		color.Blue("------------------------------------------")
+		color.Blue("|          Available Passwords:          |")
+		color.Blue("------------------------------------------")
+		color.Blue("|      Service      |      Username      |")
+		color.Blue("------------------------------------------")
+
 		cursor := bucket.Cursor()
 
-		fmt.Println("Service:", string(service))
+		color.Green(string(service))
 		for k, _ := cursor.First(); k != nil; k, _ = cursor.Next() {
-			fmt.Printf("\tUsername: %s\n", k)
+			color.Yellow("\t\t\t%s", string(k))
 		}
+		color.Blue("------------------------------------------")
 
 		return nil
 	})
