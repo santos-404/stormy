@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
+import BackgroundImage from "../components/BackgroundImage.astro";
 import Header from "../components/Header.astro";
 ---
 
@@ -13,10 +14,11 @@ import Header from "../components/Header.astro";
 		<meta name="generator" content={Astro.generator} />
 		<title>Stormy</title>
 	</head>
-	<body class="flex flex-col min-h-screen">
+	<body>
 		<Header />
 		<main>
 			<slot /> 
+			<BackgroundImage />
 		</main>
 		<Footer />
 	</body>
