@@ -77,7 +77,7 @@ Retrieve a stored password:
 4. **Delete a password**
 Remove a password from the database:
     ```bash
-    stormy delete-password --service [service-name] --username [username]
+    stormy delete --service [service-name] --username [username]
     ```
 
 
