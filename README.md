@@ -24,6 +24,42 @@ The link will be here when it gets done
 
 ## 🚀 Installation
 
+### Option 1: Download a ZIP
+
+> ⚠️ Why this method? The ZIP file excludes non-essential files, like the landing page, keeping your download size small and focused on the tool.
+
+1. Download the ZIP file:
+    - Go to the [Stormy GitHub repository](https://github.com/javsanmar5/stormy).
+    - Click on the Code button and select Download ZIP.
+
+2. Unzip the repository:
+   ```bash
+   unzip stormy-main.zip
+   cd stormy-main
+    ```
+
+
+3. Build the project:
+    ```bash
+    go build -o stormy
+    ```
+
+
+4. Move the binary to your $PATH for global access:
+    ```bash
+    sudo mv stormy /usr/local/bin
+    ```
+
+
+5. Verify the installation:
+    ```bash
+    stormy --help
+    ```
+
+### Option 2: Cloning the repository
+
+If you need the full repository, including the landing page and other resources, you can clone it:
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/javsanmar5/stormy.git
