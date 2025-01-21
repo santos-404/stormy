@@ -32,10 +32,18 @@ go.work.sum
 .DS_Store
 Thumbs.db
 
-landing-page/node_modules/
-landing-page/.astro/
-landing-page/public/
-landing-page/dist/
-
 *.tmp
 *.bak
+
+landing-page/node_modules/
+landing-page/.astro/
+landing-page/dist/
+landing-page/npm-debug.log*
+landing-page/yarn-debug.log*
+landing-page/yarn-error.log*
+landing-page/pnpm-debug.log*
+
+landing-page/.env
+landing-page/.env.production
+landing-page/.DS_Store
+landing-page/.idea/
