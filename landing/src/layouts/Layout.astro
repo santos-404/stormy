@@ -1,14 +1,24 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image" href="/favicon.ico" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Stormy</title>
 	</head>
-	<body>
-		<slot />
+	<body class="flex flex-col min-h-screen">
+		<Header />
+		<main>
+			<slot /> 
+		</main>
+		<Footer />
 	</body>
 </html>
 
@@ -18,5 +28,9 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background-color: transparent;
+		/* background-color: rgb(2, 2, 21); */
+		font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", sans-serif;
+		color: white;
 	}
 </style>
