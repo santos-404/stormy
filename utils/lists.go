@@ -11,7 +11,7 @@ import (
 )
 
 func ListAllPasswords() {
-	dbPath := GetDBPath()
+	dbPath := getDBPath()
 
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
@@ -38,7 +38,7 @@ func ListAllPasswords() {
 }
 
 func ListPasswordsByService(service string) {
-	dbPath := GetDBPath()
+	dbPath := getDBPath()
 
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
@@ -67,7 +67,7 @@ func ListPasswordsByService(service string) {
 }
 
 func ListAllServices() {
-	dbPath := GetDBPath()
+	dbPath := getDBPath()
 
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {

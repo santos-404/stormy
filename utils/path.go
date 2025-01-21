@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 )
 
-func GetDBPath() string {
+func getDBPath() string {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		log.Fatalf("Failed to get home directory: %v", err)

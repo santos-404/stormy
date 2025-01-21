@@ -11,7 +11,7 @@ import (
 )
 
 func AddPassword(service, username, password string) {
-	dbPath := GetDBPath()
+	dbPath := getDBPath()
 
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
@@ -36,7 +36,7 @@ func AddPassword(service, username, password string) {
 }
 
 func GetPassword(service, username string) {
-	dbPath := GetDBPath()
+	dbPath := getDBPath()
 
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {

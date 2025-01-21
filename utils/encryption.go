@@ -23,7 +23,7 @@ func SetMasterPasword(masterPassword, salt string) {
 
 	hashedPassword := pbkdf2.Key([]byte(masterPassword), saltBytes, 10000, 32, sha256.New)
 
-	dbPath := GetDBPath()
+	dbPath := getDBPath()
 	db, err := bolt.Open(dbPath, 0600, nil)
 	if err != nil {
 		log.Fatalf("Failed to open database: %v", err)
