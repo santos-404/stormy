@@ -36,6 +36,11 @@ func SetMasterPasword(masterPassword, salt string) {
 			return fmt.Errorf("failed to create bucket: %v", err)
 		}
 
+		existingPassword := bucket.Get([]byte("MasterPassword"))
+		if existingPassword != nil {
+			return fmt.Errorf("master password already set; cannot overwrite it")
+		}
+
 		return bucket.Put([]byte("MasterPassword"), hashedPassword)
 	})
 	if err != nil {
