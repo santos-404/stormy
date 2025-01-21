@@ -25,8 +25,12 @@ func AddPassword(service, username, password string) {
 			return fmt.Errorf("failed to create bucket: %v", err)
 		}
 
-		// TODO: Encrypt the password before storing it
-		return bucket.Put([]byte(username), []byte(password))
+		encryptedPassword, err := encryptPassword(password, db)
+		if err != nil {
+			return fmt.Errorf("failed to encrypt password: %v", err)
+		}
+		return bucket.Put([]byte(username), []byte(encryptedPassword))
+		// return bucket.Put([]byte(username), []byte(password))
 	})
 	if err != nil {
 		log.Fatalf("Failed to update database: %v", err)

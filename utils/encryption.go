@@ -4,6 +4,8 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package utils
 
 import (
+	"crypto/aes"
+	"crypto/cipher"
 	"crypto/sha256"
 	"fmt"
 	"log"
@@ -48,4 +50,42 @@ func SetMasterPasword(masterPassword, salt string) {
 	}
 
 	fmt.Println("Master password added successfully!")
+}
+
+func encryptPassword(password string, db *bolt.DB) ([]byte, error) {
+	masterPassword := getMasterPassword(db)
+	block, err := aes.NewCipher(masterPassword)
+	if err != nil {
+		return nil, err
+	}
+
+	// Use AES-GCM for authenticated encryption
+	aesGCM, err := cipher.NewGCM(block)
+	if err != nil {
+		return nil, err
+	}
+
+	nonce := make([]byte, aesGCM.NonceSize())
+	ciphertext := aesGCM.Seal(nonce, nonce, []byte(password), nil)
+	return ciphertext, nil
+}
+
+func getMasterPassword(db *bolt.DB) []byte {
+	var masterPassword []byte
+
+	err := db.View(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket([]byte("MasterPassword"))
+		if bucket == nil {
+			return fmt.Errorf("master password not set")
+		}
+
+		masterPassword = bucket.Get([]byte("MasterPassword"))
+
+		return nil
+	})
+	if err != nil {
+		log.Fatalf("Failed to get master password: %v", err)
+	}
+
+	return masterPassword
 }
