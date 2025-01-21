@@ -1,4 +1,4 @@
-module github.com/javsanmar5/passwordmanager
+module github.com/javsanmar5/stormy
 
 go 1.23.5
 

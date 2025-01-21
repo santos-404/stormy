@@ -4,7 +4,7 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	"github.com/javsanmar5/passwordmanager/utils"
+	"github.com/javsanmar5/stormy/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -15,7 +15,7 @@ var servicesCmd = &cobra.Command{
 
 Examples:
 	# List all the services stored
-	passwordmanager services
+	stormy services
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.ListAllServices()

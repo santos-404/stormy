@@ -4,7 +4,7 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	"github.com/javsanmar5/passwordmanager/utils"
+	"github.com/javsanmar5/stormy/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -16,10 +16,10 @@ This command allows you to quickly access your saved passwords without having to
 
 Examples:
 	# Get the password for the service 'github' and username 'johndoe'
-	passwordmanager get -s github -u johndoe
+	stormy get -s github -u johndoe
 
 	# Get the password for the service 'email' and username 'janedoe'
-	passwordmanager get -s email -u janedoe`,
+	stormy get -s email -u janedoe`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.GetPassword(service, username)
 	},

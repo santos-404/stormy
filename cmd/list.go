@@ -4,7 +4,7 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	"github.com/javsanmar5/passwordmanager/utils"
+	"github.com/javsanmar5/stormy/utils"
 
 	"github.com/spf13/cobra"
 )
@@ -18,10 +18,10 @@ to list every password for a specific service.
 
 Examples:
 	# List all the passwords stored
-	passwordmanager list
+	stormy list
 
 	# List all the passwords stored for the service 'github'
-	passwordmanager list -s github
+	stormy list -s github
 	`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// I know that extracting the method of list passwords by service

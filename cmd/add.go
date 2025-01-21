@@ -4,7 +4,7 @@ Copyright © 2025 Javier Santos javier.jsm21@gmail.com
 package cmd
 
 import (
-	"github.com/javsanmar5/passwordmanager/utils"
+	"github.com/javsanmar5/stormy/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -22,7 +22,7 @@ service with a username and password.
 
 Examples:
 	# Add a new password entry for the service 'github' with username 'johndoe' and password 'password123'
-	passwordmanager add -s github -u johndoe -p password123`,
+	stormy add -s github -u johndoe -p password123`,
 	Run: func(cmd *cobra.Command, args []string) {
 		utils.AddPassword(service, username, password)
 	},

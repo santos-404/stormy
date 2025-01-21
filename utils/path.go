@@ -14,5 +14,5 @@ func GetDBPath() string {
 	if err != nil {
 		log.Fatalf("Failed to get home directory: %v", err)
 	}
-	return filepath.Join(homeDir, ".passwordmanager.db")
+	return filepath.Join(homeDir, ".stormy.db")
 }

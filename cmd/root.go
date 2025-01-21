@@ -11,7 +11,7 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "passwordmanager",
+	Use:   "stormy",
 	Short: "A simple CLI tool to manage all your passwords. Built with Go and Cobra.",
 	Long: `PasswordManager is a command-line tool built with Go and Cobra to help you manage 
 and organize your passwords securely and efficiently. 
@@ -21,7 +21,7 @@ Features include:
 - Secure storage and encryption.
 - Easy-to-use commands for quick access.
 
-Get started by running 'passwordmanager help' for a list of available commands.`,
+Get started by running 'stormy help' for a list of available commands.`,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	// Run: func(cmd *cobra.Command, args []string) { },
