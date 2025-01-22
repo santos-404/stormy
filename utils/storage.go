@@ -10,6 +10,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/fatih/color"
 	bolt "go.etcd.io/bbolt"
 )
 
@@ -80,4 +81,52 @@ func GetPassword(service, username string) {
 	}
 
 	fmt.Printf("Password for username %s in service %s is %s\n", username, service, password)
+}
+
+func DeletePassword(service, username string, force bool) {
+	dbPath := getDBPath()
+
+	db, err := bolt.Open(dbPath, 0600, nil)
+	if err != nil {
+		log.Fatalf("Failed to open database: %v", err)
+	}
+	defer db.Close()
+
+	err = db.Update(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket([]byte(service))
+
+		if bucket == nil {
+			return fmt.Errorf("service %s not found", service)
+		}
+
+		if !force {
+			reader := bufio.NewReader(os.Stdin)
+			fmt.Print("Are you sure you want to delete the password? [y/N]: ")
+			input, err := reader.ReadString('\n')
+			if err != nil {
+				return fmt.Errorf("failed to read input: %v", err)
+			}
+
+			input = strings.ToLower(strings.TrimSpace(input))
+			if input == "y" || input == "yes" {
+				force = true
+			}
+		}
+
+		if force {
+			err := bucket.Delete([]byte(username))
+			if err != nil {
+				return fmt.Errorf("username %s not found in service %s", username, service)
+			}
+			color.Green("Password deleted successfully.")
+		} else {
+			color.Red("Password deletion canceled.")
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		log.Fatalf("Failed to remove the password: %v", err)
+	}
 }
