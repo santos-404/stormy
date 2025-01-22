@@ -1,21 +1,36 @@
 ---
+import Feature from '../components/Feature.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
-	<div class="flex flex-col columns justify-around items-center my-40">
-		<h1 class="text-balance mb-4 text-center text-3xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-4xl/[1.1] xl:text-5xl/[1.1]">A simple CLI tool to manage all your passwords</h1>
-		<div>
-			<a class="mt-10 flex justify-center items-center rounded-lg border h-12 px-6 py-2 bg-white text-black hover:bg-gray-300 transition-colors duration-300" href="https://github.com/javsanmar5/stormy">
-				Visit our repository!
-			</a>
-			<div class="mt-4 flex justify-center items-center rounded-lg border h-12 px-6 py-2">
-				<p class="text-md font-semibold font-mono">git clone https://github.com/javsanmar5/stormy</p>
-				<button onclick="copyToClipboard()" class="active:scale-110 transition-transform ml-4">
-					<svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 14H19C20.1046 14 21 13.1046 21 12V5C21 3.89543 20.1046 3 19 3H12C10.8954 3 10 3.89543 10 5V6.5M5 10H12C13.1046 10 14 10.8954 14 12V19C14 20.1046 13.1046 21 12 21H5C3.89543 21 3 20.1046 3 19V12C3 10.8954 3.89543 10 5 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-				</button><div class="absolute inset-0 rounded-lg bg-gradient-to-r from-green-400 via-purple-500 to-green-400 -z-10"></div>
+<Layout >
+	<div class="flex flex-col justify-around items-center">
+		<section class="flex flex-col justify-around items-center mt-40">
+			<h1 class="text-balance mb-4 text-center text-3xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-4xl/[1.1] xl:text-5xl/[1.1]">A simple CLI tool to manage all your passwords</h1>
+			<div>
+				<a class="mt-10 flex justify-center items-center rounded-lg border h-12 px-6 py-2 bg-white text-black hover:bg-gray-300 transition-colors duration-300" href="https://github.com/javsanmar5/stormy">
+					Visit our repository!
+				</a>
+				<div class="mt-4 flex justify-center items-center rounded-lg border h-12 px-6 py-2 bg-gradient-to-r from-[rgba(80,200,120,0.5)] to-[rgba(160,32,240,0.5)]  hover:from-[rgba(80,200,120,0.65)] hover:to-[rgba(160,32,240,0.65)]">					<p class="text-md font-semibold font-mono">git clone https://github.com/javsanmar5/stormy</p>
+					<button onclick="copyToClipboard()" class="active:scale-110 transition-transform ml-4">
+						<svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 14H19C20.1046 14 21 13.1046 21 12V5C21 3.89543 20.1046 3 19 3H12C10.8954 3 10 3.89543 10 5V6.5M5 10H12C13.1046 10 14 10.8954 14 12V19C14 20.1046 13.1046 21 12 21H5C3.89543 21 3 20.1046 3 19V12C3 10.8954 3.89543 10 5 10Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+					</button>
+				</div>
+			</d>	
+		</section>
+		
+		<section id="features" class="text-left mt-28 xl:w-[60vw] md:w-[70vw] w-[80vw]">
+			<h2 class="text-balance mb-4 text-1xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-2xl/[1.1] xl:text-3xl/[1.1]">Features</h2>
+			<div class="grid grid-cols-2 gap-x-10 gap-y-6">
+				<Feature />
+				<Feature />
+				<Feature />
+				<Feature />
 			</div>
-		</div>
+		</section>
+		
+		<section id="installation-guide" class="text-left mt-10 xl:w-[60vw] md:w-[70vw] w-[80vw]">
+			<h2 class="text-balance mb-4 text-1xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-2xl/[1.1] xl:text-3xl/[1.1]">Installation guide</h2>
+		</section>
 	</div>
-	
 </Layout>
