@@ -99,6 +99,11 @@ func DeletePassword(service, username string, force bool) {
 			return fmt.Errorf("service %s not found", service)
 		}
 
+		pwd := bucket.Get([]byte(username))
+		if pwd == nil {
+			return fmt.Errorf("username %s not found in service %s", username, service)
+		}
+
 		if !force {
 			reader := bufio.NewReader(os.Stdin)
 			fmt.Print("Are you sure you want to delete the password? [y/N]: ")
@@ -114,14 +119,20 @@ func DeletePassword(service, username string, force bool) {
 		}
 
 		if force {
-			pwd := bucket.Get([]byte(username))
-			if pwd == nil {
-				return fmt.Errorf("username %s not found in service %s", username, service)
-			}
 			err := bucket.Delete([]byte(username))
 			if err != nil {
 				return fmt.Errorf("username %s not found in service %s", username, service)
 			}
+
+			cursor := bucket.Cursor()
+			first, _ := cursor.First()
+			if first == nil {
+				err := tx.DeleteBucket([]byte(service))
+				if err != nil {
+					return fmt.Errorf("failed to delete service %s: %v", service, err)
+				}
+			}
+
 			color.Green("Password deleted successfully.")
 		} else {
 			color.Red("Password deletion canceled.")
