@@ -18,6 +18,8 @@ Stormy is a lightweight, secure, and user-friendly command-line interface (CLI) 
 
 We're building a modern, responsive landing page for Stormy using **Astro**. This page will serve as the central hub for installation guides, documentation, and additional resources.
 
+![Landing page](static/landing-page.png)
+
 The link will be here when it gets done
 
 ---
