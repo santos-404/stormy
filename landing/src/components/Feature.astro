@@ -1,7 +1,8 @@
 ---
-
+const { title, description } = Astro.props;
 ---
 
-<div class="border border-white rounded-md">
-    <p>Placeholder</p>
+<div class="border border-white rounded-md h-44 p-4 bg-gradient-to-t from-gray-800 ">
+    <h4 class="text-xl font-bold">{title}</h4>
+    <p>{description}</p>
 </div>

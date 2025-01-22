@@ -22,10 +22,11 @@ import Layout from '../layouts/Layout.astro';
 		<section id="features" class="text-left mt-28 xl:w-[60vw] md:w-[70vw] w-[80vw]">
 			<h2 class="text-balance mb-4 text-1xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-2xl/[1.1] xl:text-3xl/[1.1]">Features</h2>
 			<div class="grid grid-cols-2 gap-x-10 gap-y-6">
-				<Feature />
-				<Feature />
-				<Feature />
-				<Feature />
+				<Feature title="Secure Master Password" description="Protect your stored passwords with a master password hashed using PBKDF2 and salted for added security."/>
+				<Feature title="Encrypted Storage" description="All passwords are encrypted before storage using state-of-the-art cryptographic techniques."/>
+				<Feature title="Local Database" description="Stormy uses the bbolt database for lightweight, local storage."/>
+				<Feature title="Salt for Extra Security" description="Optionally add a salt to your master password for enhanced protection."/>
+				<Feature title="Command-line Simplicity" description="Add, retrieve, and manage your passwords entirely from the terminal." />
 			</div>
 		</section>
 		
