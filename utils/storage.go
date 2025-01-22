@@ -114,6 +114,10 @@ func DeletePassword(service, username string, force bool) {
 		}
 
 		if force {
+			pwd := bucket.Get([]byte(username))
+			if pwd == nil {
+				return fmt.Errorf("username %s not found in service %s", username, service)
+			}
 			err := bucket.Delete([]byte(username))
 			if err != nil {
 				return fmt.Errorf("username %s not found in service %s", username, service)
