@@ -124,6 +124,14 @@ View all the services for which passwords are stored:
     stormy services
     ```
 
+6. **List all passwords saved.**
+View all your passwords stored in stormy, you can filter by a service.
+    
+    ```bash
+    stormy list --service [optional-service-name]
+    ```
+
+
 ---
 
 ## ⚙️ Commands Overview
@@ -134,6 +142,7 @@ View all the services for which passwords are stored:
 | get | Retrieve a password for a specific service and user. |
 | delete | Delete a stored password for a service.
 | services | List all stored services.|
+| list | List all stored passwords. You can filter by service.|
 | **help** |	Show detailed help for any command. |
 
 ---
