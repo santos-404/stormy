@@ -1,6 +1,7 @@
 ---
 import Feature from '../components/Feature.astro';
 import Layout from '../layouts/Layout.astro';
+import InstallationGuide from '../components/InstallationGuide.astro';
 ---
 
 <Layout >
@@ -25,8 +26,8 @@ import Layout from '../layouts/Layout.astro';
 		</section>
 		
 		<section id="features" class="text-left mt-28 xl:w-[60vw] md:w-[70vw] w-[80vw]">
-			<h2 class="text-balance mb-4 text-1xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-2xl/[1.1] xl:text-3xl/[1.1]">Features</h2>
-			<div class="grid md:grid-cols-2 gap-x-10 gap-y-6">
+			<h2 class="text-balance text-2xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-3xl/[1.1]">Features</h2>
+			<div class="grid mt-6 md:grid-cols-2 gap-x-10 gap-y-6">
 				<Feature title="Secure Master Password" description="Protect your stored passwords with a master password hashed using PBKDF2 and salted for added security."/>
 				<Feature title="Encrypted Storage" description="All passwords are encrypted before storage using state-of-the-art cryptographic techniques."/>
 				<Feature title="Local Database" description="Stormy uses the bbolt database for lightweight, local storage."/>
@@ -35,8 +36,8 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 		</section>
 		
-		<section id="installation-guide" class="text-left mt-10 xl:w-[60vw] md:w-[70vw] w-[80vw]">
-			<h2 class="text-balance mb-4 text-1xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-2xl/[1.1] xl:text-3xl/[1.1]">Installation guide</h2>
+		<section id="installation-guide" class="text-left mt-20 xl:w-[60vw] md:w-[70vw] w-[80vw]">
+			<InstallationGuide />
 		</section>
 	</div>
 </Layout>

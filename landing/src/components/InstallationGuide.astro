@@ -1,0 +1,75 @@
+---
+
+---
+
+<h2 class="text-balance mb-4 text-2xl/[1.1] font-bold font-heading sm:max-w-[24ch] md:text-3xl/[1.1]">Installation guide</h2>
+<div class="lg:flex lg:justify-between text-sm md:text-base gap-6 mt-6">
+    <div class="w-full lg:w-1/2 p-6 bg-[rgb(40,40,40,0.5)] rounded-lg shadow-xl">
+        <h3 class="text-2xl font-semibold mb-4">Option 1: Download a ZIP</h3>
+        <ol class="space-y-4">
+            <li>
+                <strong>Download the ZIP file:</strong>
+                Go to the <a href="https://github.com/javsanmar5/stormy" target="_blank" class="text-blue-500 hover:underline">Stormy GitHub repository</a>.<br>
+                Click on the "Code" button and select "Download ZIP".
+            </li>
+            <li>
+                <strong>Unzip the repository:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl flex flex-col gap-y-2">
+                    <code>unzip stormy-main.zip</code>
+                    <code>cd stormy-main</code>
+                </div>
+            </li>
+            <li>
+                <strong>Build the project:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl">
+                    <code>go build -o stormy</code>
+                </div>
+            </li>
+            <li>md:text-2xl/[1.1] xl:text-3xl/[1.1]
+                <strong>Move the binary to your $PATH for global access:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl">
+                    <code>sudo mv stormy /usr/local/bin</code>
+                </div>
+            </li>
+            <li>
+                <strong>Verify the installation:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl">
+                    <code>stormy --help</code>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="w-full mt-10 lg:mt-0 lg:w-1/2 p-6 bg-[rgb(40,40,40,0.5)] rounded-lg shadow-xl">
+        <h3 class="text-2xl font-semibold mb-4">Option 2: Cloning the repository</h3>
+        <p class="mb-4">If you need the full repository, including the landing page and other resources, you can clone it:</p>
+        <ol class="space-y-4">
+            <li>
+                <strong>Clone the repository:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl flex flex-col gap-y-2 break-words">
+                    <code>git clone https://github.com/javsanmar5/stormy.git</code>
+                    <code>cd stormy</code>
+                </div>
+            </li>
+            <li>
+                <strong>Build the project:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl">
+                     <code>go build -o stormy</code></>
+                </div>
+            </li>
+            <li>
+                <strong>Move the binary to your $PATH for global access:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl">
+                    <code>sudo mv stormy /usr/local/bin</code></>
+                </div>
+            </li>
+            <li>
+                <strong>Verify the installation:</strong><br>
+                <div class="bg-gray-600 text-white mt-2 mb-4 p-2 rounded-md shadow-xl">
+                    <code>stormy --help</code>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
