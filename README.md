@@ -197,7 +197,7 @@ About contributing to the project.Contributions are welcome! If you'd like to co
 5. **Commit and Push:**
    - Commit your changes with a descriptive commit message:
      ```bash
-     git commit -m "[cli/feature]: Add a descriptive message about your changes"
+     git commit -m "[cli/landing]: Add a descriptive message about your changes"
      ```
 
 6. **Submit a Pull Request (PR):**
