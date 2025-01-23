@@ -164,6 +164,44 @@ Stormy is licensed under the MIT License. You’re free to use, modify, and dist
 
 ---
 
-## 📧 Support
+## 📧 Support and Contributions
 
 If you encounter any issues or have suggestions for improvement, feel free to open an issue in the GitHub repository. I will really appreciate it.
+
+About contributing to the project.Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+1. **Generate an Issue:**
+   - Before making changes, create an issue to discuss the proposed changes or feature.
+
+2. **Fork the Repository:**
+   - Click the "Fork" button at the top of this repository to create your own copy.
+
+3. **Create a Branch:**
+   - Create a new branch for your changes:
+     ```bash
+     git checkout -b explain-your-changes
+     ```
+
+4. **Make Your Changes:**
+   - Make your changes in the new branch.
+   - Follow the project's coding conventions and style.
+
+5. **Commit and Push:**
+   - Commit your changes with a descriptive commit message:
+     ```bash
+     git commit -m "[cli/feature]: Add a descriptive message about your changes"
+     ```
+
+6. **Submit a Pull Request (PR):**
+   - Go to the original repository.
+   - Click on the "Pull Requests" tab and then click "New Pull Request."
+   - Compare your fork's branch to the main repository's branch.
+   - Add a detailed description of your changes and link to the issue you created.
+   - Submit the PR for review.
+
+### Guidelines for Contributors:
+- Ensure your code follows the project standards and includes proper documentation.
+- Check for open issues or discussions before starting work on a new feature.
+- Avoid submitting large PRs; try to keep changes focused and modular.
+
+Thank you for your interest in contributing to this project! 😊
