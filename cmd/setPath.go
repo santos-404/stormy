@@ -23,7 +23,7 @@ Example:
 	# It will ask you for the new path and confirm the change`,
 
 	Run: func(cmd *cobra.Command, args []string) {
-		utils.SetPath(force)
+		utils.SetDBPath(force)
 	},
 }
 

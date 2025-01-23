@@ -18,7 +18,7 @@ func getDBPath() string {
 	var err error
 
 	_ = godotenv.Load()
-	path := os.Getenv("DB_PATH")
+	path := strings.TrimSpace(os.Getenv("DB_PATH"))
 
 	if path == "" {
 		path, err = os.UserHomeDir()
@@ -26,19 +26,29 @@ func getDBPath() string {
 			log.Fatalf("Failed to get home directory: %v", err)
 		}
 	}
+	dbPath := filepath.Join(path, ".stormy.db")
 
-	return filepath.Join(path, ".stormy.db")
+	absPath, err := filepath.Abs(dbPath)
+	if err != nil {
+		log.Fatalf("Failed to get absolute path: %v", err)
+	}
+
+	return absPath
 }
 
-func SetPath(force bool) {
+func SetDBPath(force bool) {
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Which path do you want to use for the database?(./):")
-	path, err := reader.ReadString('\n')
+	fmt.Print("Which path do you want to use for the database?(/home/user):")
+
+	newPath, err := reader.ReadString('\n')
+	newPath = strings.TrimSpace(newPath)
+	newPath = strings.TrimSuffix(newPath, "/")
+
 	if err != nil {
 		log.Fatalf("Failed to read the input: %v", err)
 	}
-	newEnv := "DB_PATH=" + strings.TrimSpace(path)
+	newEnv := "DB_PATH=" + newPath
 
 	if !force {
 		reader := bufio.NewReader(os.Stdin)
@@ -55,10 +65,27 @@ func SetPath(force bool) {
 	}
 
 	if force {
+		moveDB(newPath)
 		d1 := []byte(newEnv)
 		err = os.WriteFile(".env", d1, 0644)
 		if err != nil {
 			log.Fatalf("Failed to write to .env file: %v", err)
 		}
+	}
+}
+
+func moveDB(newPath string) {
+	oldPath := getDBPath()
+
+	if _, err := os.Stat(oldPath); os.IsNotExist(err) {
+		fmt.Println("reach here")
+		return
+	}
+
+	newFileName := filepath.Join(newPath, ".stormy.db")
+
+	err := os.Rename(oldPath, newFileName)
+	if err != nil {
+		log.Fatalf("Failed to move the database: %v", err)
 	}
 }
