@@ -131,10 +131,16 @@ View all the services for which passwords are stored:
 View all your passwords stored in stormy, you can filter by a service.
     
     ```bash
+    stormy list
     stormy list --service [optional-service-name]
     ```
 
+7. **Set the path for the database.**
+This command allows you to specify a new path and optionally force the change without confirmation.
 
+    ```bash
+    stormy set-path
+    ```
 ---
 
 ## ⚙️ Commands Overview
@@ -146,6 +152,7 @@ View all your passwords stored in stormy, you can filter by a service.
 | delete | Delete a stored password for a service.
 | services | List all stored services.|
 | list | List all stored passwords. You can filter by service.|
+| set-path | Set the path for the database. |
 | **help** |	Show detailed help for any command. |
 
 ---
