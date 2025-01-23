@@ -21,7 +21,6 @@ go.work.sum
 *.log
 
 .env
-.env.*
 
 .idea/
 .vscode/
