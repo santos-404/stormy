@@ -7,8 +7,10 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/fatih/color"
 	bolt "go.etcd.io/bbolt"
@@ -144,4 +146,23 @@ func DeletePassword(service, username string, force bool) {
 	if err != nil {
 		log.Fatalf("Failed to remove the password: %v", err)
 	}
+}
+
+func NewPassword(service, username string) {
+	password := generatePassword()
+	AddPassword(service, username, password)
+}
+
+func generatePassword() string {
+	const defaultLength = 12
+	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	var seededRand *rand.Rand = rand.New(rand.NewSource(time.Now().UnixNano()))
+
+	b := make([]byte, defaultLength)
+	for i := range b {
+		b[i] = charset[seededRand.Intn(len(charset))]
+	}
+
+	return string(b)
+
 }
