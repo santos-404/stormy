@@ -149,11 +149,11 @@ func DeletePassword(service, username string, force bool) {
 }
 
 func NewPassword(service, username string) {
-	password := generatePassword()
+	password := generateRandomStrings()
 	AddPassword(service, username, password)
 }
 
-func generatePassword() string {
+func generateRandomStrings() string {
 	const defaultLength = 12
 	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	var seededRand *rand.Rand = rand.New(rand.NewSource(time.Now().UnixNano()))
