@@ -20,7 +20,7 @@ func SetMasterPasword(masterPassword, salt string) {
 	if salt != "" {
 		saltBytes = []byte(salt)
 	} else {
-		saltBytes = []byte(generateRandomStrings())
+		saltBytes = []byte(generateRandomStrings(12))
 	}
 
 	hashedPassword := pbkdf2.Key([]byte(masterPassword), saltBytes, 10000, 32, sha256.New)
