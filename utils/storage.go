@@ -148,17 +148,16 @@ func DeletePassword(service, username string, force bool) {
 	}
 }
 
-func NewPassword(service, username string) {
-	password := generateRandomStrings()
+func NewPassword(service, username string, length int8) {
+	password := generateRandomStrings(length)
 	AddPassword(service, username, password)
 }
 
-func generateRandomStrings() string {
-	const defaultLength = 12
+func generateRandomStrings(length int8) string {
 	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	var seededRand *rand.Rand = rand.New(rand.NewSource(time.Now().UnixNano()))
 
-	b := make([]byte, defaultLength)
+	b := make([]byte, length)
 	for i := range b {
 		b[i] = charset[seededRand.Intn(len(charset))]
 	}
