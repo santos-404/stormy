@@ -16,12 +16,11 @@ Stormy is a lightweight, secure, and user-friendly command-line interface (CLI) 
 
 ## 🌐 Landing Page
 
-We're building a modern, responsive landing page for Stormy using **Astro**. This page will serve as the central hub for installation guides, documentation, and additional resources.
+We've built a modern, responsive landing page for Stormy using **Astro**. This page will serve as the central hub for installation guides, documentation, and additional resources.
 
 You can visit the web clicking here [Stormy CLI](http://stormyCLI.vercel.app).
 
 ![Landing page](static/landing-page.png)
-
 
 ---
 
