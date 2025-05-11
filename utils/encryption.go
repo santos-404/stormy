@@ -15,7 +15,7 @@ import (
 	"golang.org/x/crypto/pbkdf2"
 )
 
-func SetMasterPasword(masterPassword, salt string) {
+func SetMasterPassword(masterPassword, salt string) {
 
 	var saltBytes []byte
 
