@@ -15,15 +15,8 @@ import (
 )
 
 func SetMasterPasword(masterPassword, salt string) {
-	var saltBytes []byte
 
-	if salt != "" {
-		saltBytes = []byte(salt)
-	} else {
-		saltBytes = []byte(generateRandomStrings(12))
-	}
-
-	hashedPassword := pbkdf2.Key([]byte(masterPassword), saltBytes, 10000, 32, sha256.New)
+    hashedPassword, saltBytes := hash(masterPassword, salt)
 
 	dbPath := getDBPath()
 	db, err := bolt.Open(dbPath, 0600, nil)
@@ -133,3 +126,19 @@ func decryptPassword(encryptedPassword, masterPassword []byte, db *bolt.DB) (str
 
 	return string(plaintext), nil
 }
+
+func hash(toHash, salt string) ([]byte, []byte) {
+	var saltBytes []byte
+
+	if salt != "" {
+		saltBytes = []byte(salt)
+	} else {
+		saltBytes = []byte(generateRandomStrings(12))
+	}
+    hashed := pbkdf2.Key([]byte(toHash), saltBytes, 10000, 32, sha256.New)
+
+    return hashed, saltBytes
+
+}
+
+
