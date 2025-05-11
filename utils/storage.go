@@ -31,7 +31,12 @@ func AddPassword(service, username, password string) {
 			return fmt.Errorf("failed to create bucket: %v", err)
 		}
 
-		encryptedPassword, err := encryptPassword(password, db)
+        reader := bufio.NewReader(os.Stdin)
+        fmt.Print("Enter your master password: ")
+		masterPassword, _ := reader.ReadString('\n')
+		masterPassword = strings.TrimSpace(masterPassword)
+
+		encryptedPassword, err := encryptPassword(password, masterPassword, db)
 		if err != nil {
 			return fmt.Errorf("failed to encrypt password: %v", err)
 		}
@@ -71,7 +76,7 @@ func GetPassword(service, username string) {
 		masterPassword, _ := reader.ReadString('\n')
 		masterPassword = strings.TrimSpace(masterPassword)
 
-		password, err = decryptPassword(pwd, []byte(masterPassword), db)
+		password, err = decryptPassword(pwd, masterPassword)
 		if err != nil {
 			return fmt.Errorf("failed to decrypt password: %v", err)
 		}
