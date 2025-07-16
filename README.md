@@ -1,22 +1,22 @@
-# Stormy - Secure Password Manager CLI
+# Stormy - Secure password manager CLI
 
-Stormy is a lightweight, secure, and user-friendly command-line interface (CLI) password manager written in Go. It uses **bbolt** for local storage and incorporates strong encryption to keep your passwords safe. With Stormy, you can manage your credentials directly from your terminal with speed and efficiency.
-
----
-
-## 🔒 Features
-
-- **Secure Master Password**: Protect your stored passwords with a master password hashed using PBKDF2 and salted for added security.
-- **Encrypted Storage**: All passwords are encrypted before storage using state-of-the-art cryptographic techniques.
-- **Local Database**: Stormy uses the **bbolt** database for lightweight, local storage.
-- **Salt for Extra Security**: Optionally add a salt to your master password for enhanced protection.
-- **Command-line Simplicity**: Add, retrieve, and manage your passwords entirely from the terminal.
+Stormy is a lightweight, secure, and user-friendly command-line interface (CLI) password manager written in Go. It uses bbolt for local storage and incorporates strong encryption to keep your passwords safe. With Stormy, you can manage your credentials directly from your terminal with speed and efficiency.
 
 ---
 
-## 🌐 Landing Page
+## Features
 
-We've built a modern, responsive landing page for Stormy using **Astro**. This page will serve as the central hub for installation guides, documentation, and additional resources.
+- **Secure master password**: Protect your stored passwords with a master password hashed using PBKDF2 and salted for added security.
+- **Encrypted storage**: All passwords are encrypted before storage using state-of-the-art cryptographic techniques.
+- **Local database**: Stormy uses the bbolt database for lightweight, local storage.
+- **Salt for extra security**: Optionally add a salt to your master password for enhanced protection.
+- **Command-line simplicity**: Add, retrieve, and manage your passwords entirely from the terminal.
+
+---
+
+## Landing page
+
+We've built a modern, responsive landing page for Stormy using Astro. This page will serve as the central hub for installation guides, documentation, and additional resources.
 
 You can visit the web clicking here [Stormy CLI](http://stormyCLI.vercel.app).
 
@@ -24,7 +24,7 @@ You can visit the web clicking here [Stormy CLI](http://stormyCLI.vercel.app).
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ### Option 1: Download a ZIP
 
@@ -87,9 +87,9 @@ If you need the full repository, including the landing page and other resources,
     ```
 ---
 
-## 📖 Usage
+## Usage
 
-1. **Set a Master Password**. 
+1. **Set a master password**. 
 Before saving any passwords, set a master password to secure your data:
 
     ```bash
@@ -147,10 +147,12 @@ Generate a good password automatically for a service and an user.
     ```bash
     stormy new --service [service-name] --username [username]
     ```
-    
+
+> In any moment you can check the commands via _stormy help_
+ 
 ---
 
-## ⚙️ Commands Overview
+## Commands overview
 | Command |	Description |
 |-------------|----------|
 | set-master-password |	Set your master password with an optional salt. |
@@ -165,7 +167,7 @@ Generate a good password automatically for a service and an user.
 
 ---
 
-## 🛡️ Security Practices
+## Security practices
 
 - **No Plaintext Storage**: Stormy never stores plaintext passwords or master passwords.
 - **PBKDF2 and Salting**: Master passwords are hashed with PBKDF2 and salted for strong resistance against brute-force attacks.
@@ -173,49 +175,49 @@ Generate a good password automatically for a service and an user.
 
 ---
 
-## 📝 License
+## License
 
 Stormy is licensed under the MIT License. You’re free to use, modify, and distribute it under the terms of this license.
 
 
 ---
 
-## 📧 Support and Contributions
+## Support and contributions
 
 If you encounter any issues or have suggestions for improvement, feel free to open an issue in the GitHub repository. I will really appreciate it.
 
 About contributing to the project.Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-1. **Generate an Issue:**
+1. **Generate an issue:**
    - Before making changes, create an issue to discuss the proposed changes or feature.
 
-2. **Fork the Repository:**
+2. **Fork the repository:**
    - Click the "Fork" button at the top of this repository to create your own copy.
 
-3. **Create a Branch:**
+3. **Create a branch:**
    - Create a new branch for your changes:
      ```bash
      git checkout -b explain-your-changes
      ```
 
-4. **Make Your Changes:**
+4. **Make your changes:**
    - Make your changes in the new branch.
    - Follow the project's coding conventions and style.
 
-5. **Commit and Push:**
+5. **Commit and push:**
    - Commit your changes with a descriptive commit message:
      ```bash
      git commit -m "[cli/landing]: Add a descriptive message about your changes"
      ```
 
-6. **Submit a Pull Request (PR):**
+6. **Submit a pull request (PR):**
    - Go to the original repository.
    - Click on the "Pull Requests" tab and then click "New Pull Request."
    - Compare your fork's branch to the main repository's branch.
    - Add a detailed description of your changes and link to the issue you created.
    - Submit the PR for review.
 
-### Guidelines for Contributors:
+### Guidelines for contributors:
 - Ensure your code follows the project standards and includes proper documentation.
 - Check for open issues or discussions before starting work on a new feature.
 - Avoid submitting large PRs; try to keep changes focused and modular.
